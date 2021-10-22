@@ -1,0 +1,914 @@
+{
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"SaveLoginResAdmin": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"_id",
+					"name",
+					"email",
+					"password",
+					"createdAt",
+					"updatedAt"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SaveReqAdmin": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"name",
+					"email",
+					"password"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"LoginReqAdmin": {
+				"properties": {
+					"email": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"email",
+					"password"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IGroupMember": {
+				"properties": {
+					"userId": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"userId"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IGroupMessages": {
+				"properties": {
+					"userId": {
+						"type": "string"
+					},
+					"message": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"userId",
+					"message"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SaveUpdateResGroup": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"member": {
+						"items": {
+							"$ref": "#/components/schemas/IGroupMember"
+						},
+						"type": "array"
+					},
+					"message": {
+						"items": {
+							"$ref": "#/components/schemas/IGroupMessages"
+						},
+						"type": "array"
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"_id",
+					"name",
+					"member",
+					"message",
+					"createdAt",
+					"updatedAt"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SaveReqGroup": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"member": {
+						"items": {
+							"$ref": "#/components/schemas/IGroupMember"
+						},
+						"type": "array"
+					},
+					"message": {
+						"items": {
+							"$ref": "#/components/schemas/IGroupMessages"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"name",
+					"member",
+					"message"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"AddReqUserToGroup": {
+				"properties": {
+					"groupId": {
+						"type": "string"
+					},
+					"userId": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"groupId",
+					"userId"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"AddReqMessageToGroup": {
+				"properties": {
+					"groupId": {
+						"type": "string"
+					},
+					"userId": {
+						"type": "string"
+					},
+					"message": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"groupId",
+					"userId",
+					"message"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"_LeanDocument__LeanDocument_T__": {
+				"properties": {},
+				"type": "object"
+			},
+			"Pick__LeanDocument_T_.Exclude_keyof_LeanDocument_T_.Exclude_keyofDocument._id-or-id-or-__v_-or-%24isSingleNested__": {
+				"properties": {
+					"_id": {
+						"$ref": "#/components/schemas/_LeanDocument__LeanDocument_T__",
+						"description": "This documents _id."
+					},
+					"__v": {
+						"description": "This documents __v."
+					},
+					"id": {
+						"description": "The string version of this documents _id."
+					}
+				},
+				"type": "object",
+				"description": "From T, pick a set of properties whose keys are in the union K"
+			},
+			"Omit__LeanDocument_this_.Exclude_keyofDocument._id-or-id-or-__v_-or-%24isSingleNested_": {
+				"$ref": "#/components/schemas/Pick__LeanDocument_T_.Exclude_keyof_LeanDocument_T_.Exclude_keyofDocument._id-or-id-or-__v_-or-%24isSingleNested__",
+				"description": "Construct a type with the properties of T except for those in type K."
+			},
+			"LeanDocument_this_": {
+				"$ref": "#/components/schemas/Omit__LeanDocument_this_.Exclude_keyofDocument._id-or-id-or-__v_-or-%24isSingleNested_"
+			},
+			"IGroup": {
+				"$ref": "#/components/schemas/LeanDocument_this_"
+			},
+			"DeleteReqGroup": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"_id"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CheckReqMessages": {
+				"properties": {
+					"groupId": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"groupId"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SaveLoginResUser": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					},
+					"userName": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					},
+					"pictureUrl": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"_id",
+					"userName",
+					"email",
+					"password",
+					"pictureUrl",
+					"createdAt",
+					"updatedAt"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SaveReqUser": {
+				"properties": {
+					"userName": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					},
+					"pictureUrl": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"userName",
+					"email",
+					"password",
+					"pictureUrl"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IUser": {
+				"$ref": "#/components/schemas/LeanDocument_this_"
+			},
+			"DeleteReqUser": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"_id"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"UpdateReqUser": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					},
+					"userName": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					},
+					"pictureUrl": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"_id",
+					"userName",
+					"email",
+					"password",
+					"pictureUrl"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"LoginReqUser": {
+				"properties": {
+					"email": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"email",
+					"password"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
+		"securitySchemes": {
+			"api_key": {
+				"type": "apiKey",
+				"name": "token",
+				"in": "header"
+			}
+		}
+	},
+	"info": {
+		"title": "library-management",
+		"version": "1.0.0",
+		"license": {
+			"name": "ISC"
+		},
+		"contact": {}
+	},
+	"openapi": "3.0.0",
+	"paths": {
+		"/Admin/saveAdmin": {
+			"post": {
+				"operationId": "SaveAdmin",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/SaveLoginResAdmin"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Admin Routes"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/SaveReqAdmin"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/Admin/loginAdmin": {
+			"post": {
+				"operationId": "FindAdmin",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/SaveLoginResAdmin"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Admin Routes"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/LoginReqAdmin"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/Group/saveGroup": {
+			"post": {
+				"operationId": "SaveGroup",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/SaveUpdateResGroup"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Group Route"
+				],
+				"security": [
+					{
+						"api_key": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/SaveReqGroup"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/Group/addUserToGroup": {
+			"post": {
+				"operationId": "AddUserToGroup",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/SaveUpdateResGroup"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Group Route"
+				],
+				"security": [
+					{
+						"api_key": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/AddReqUserToGroup"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/Group/saveMessageToGroup": {
+			"post": {
+				"operationId": "SaveMessageToGroup",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/SaveUpdateResGroup"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Group Route"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/AddReqMessageToGroup"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/Group/checkWords": {
+			"get": {
+				"operationId": "CheckWords",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"group": {
+											"properties": {
+												"groupId": {
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"groupName": {
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"groupId",
+												"groupName"
+											],
+											"type": "object"
+										},
+										"employees": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"group",
+										"employees"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Group Route"
+				],
+				"security": [
+					{
+						"api_key": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/Group/noOfTimesWordUsed": {
+			"get": {
+				"operationId": "NoOfTimesWordUsed",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"wordCount": {
+											"items": {
+												"type": "number",
+												"format": "double"
+											},
+											"type": "array"
+										},
+										"employeeId": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"wordCount",
+										"employeeId"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Group Route"
+				],
+				"security": [
+					{
+						"api_key": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/Group/deleteGroup": {
+			"delete": {
+				"operationId": "DeleteGroup",
+				"responses": {
+					"200": {
+						"description": "Group Deleted Successfully.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/IGroup"
+										},
+										{
+											"properties": {
+												"_id": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"_id"
+											],
+											"type": "object"
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Group Route"
+				],
+				"security": [
+					{
+						"api_key": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/DeleteReqGroup"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/Group/checkMessages": {
+			"post": {
+				"operationId": "CheckMessages",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Group Route"
+				],
+				"security": [
+					{
+						"api_key": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CheckReqMessages"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/User/saveUser": {
+			"post": {
+				"operationId": "SaveUser",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/SaveLoginResUser"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"User Routes"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/SaveReqUser"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/User/deleteUser": {
+			"delete": {
+				"operationId": "DeleteUser",
+				"responses": {
+					"200": {
+						"description": "User deleted from database",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/IUser"
+										},
+										{
+											"properties": {
+												"_id": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"_id"
+											],
+											"type": "object"
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"User Routes"
+				],
+				"security": [
+					{
+						"api_key": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/DeleteReqUser"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/User/updateUser": {
+			"put": {
+				"operationId": "UpdateUser",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/SaveLoginResUser"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"User Routes"
+				],
+				"security": [
+					{
+						"api_key": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdateReqUser"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/User/loginUser": {
+			"post": {
+				"operationId": "FindUser",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/SaveLoginResUser"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"User Routes"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/LoginReqUser"
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/"
+		}
+	]
+}
