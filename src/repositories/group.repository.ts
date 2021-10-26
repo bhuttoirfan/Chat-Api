@@ -33,4 +33,14 @@ export class MainGroup {
     allGroups() {
         return group_schema.find();
     }
+
+    messageCount(_id: string) {
+        const aggregate = group_schema.aggregate([
+            {
+                $match: { gId: {_id} }
+            }
+        ]);
+
+        console.log(aggregate);
+    }
 }

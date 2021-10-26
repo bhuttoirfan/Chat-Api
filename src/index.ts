@@ -7,7 +7,7 @@ import morgan from "morgan";
 
 import { main_api } from './routes/index.routes';
 import {MongoDb} from './config/mongodb.conn';
-import { mongo_cluster, db_name, user_name, password,  } from './utils/constants.utils';
+import { mongo_cluster, db_name, user_name, password  } from './utils/constants.utils';
 import {Server} from 'http';
 
 let server: Server | null = null;

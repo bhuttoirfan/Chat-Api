@@ -132,6 +132,7 @@ export class GroupController {
 
         groups.map((curGrp) => {
             curGrp.message.map((curMsg, i) => {
+                let something =<any> new MainGroup().messageCount(<string>curGrp._id);
 
                 if(curMsg.message.includes('Salary') || curMsg.message.includes('salary')) {
                     count++;
